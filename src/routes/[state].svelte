@@ -12,9 +12,15 @@
     export let state;
 </script>
 
-<h1>
-    {state}
-</h1>
+<svelte:head>
+    <title>Car book - {state}</title>
+</svelte:head>
+
+<div class="section header">
+	<div class="container">
+		<h1>Car book - {state}</h1>
+	</div>
+</div>
 
 <Carplate />
 <Carusage />

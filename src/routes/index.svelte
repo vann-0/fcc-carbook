@@ -5,6 +5,16 @@
 	import TableContainer from '../components/TableContainer.svelte';
 </script>
 
+<svelte:head>
+    <title>Car book system</title>
+</svelte:head>
+
+<div class="section header">
+	<div class="container">
+		<h1>Car book system</h1>
+	</div>
+</div>
+
 <Carplate />
 <Carusage />
 <Carbookuser />
