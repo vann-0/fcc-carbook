@@ -13,6 +13,60 @@ function stateStats(state,data){
     return parserStats(stateRawData);
 }
 
+function historicUS(historicData){
+  return parserHistoric(historicData);
+}
+
+function parserHistoric(historicData){
+    return[
+        {
+            label:'Cases',
+            key:'positive',
+            color:'rgb(100,0,200)'   
+        },
+        {
+            label:'Recovered',
+            key:'recovered',
+            color:'rgb(100,100,200)'   
+        },
+        {
+            label:'Total Tested',
+            key:'totalTestResults',
+            color:'rgb(10,30,100)'   
+        },
+        {
+            label:'Hospitalized',
+            key:'hospitalizedCurrently',
+            color:'rgb(20,100,230)'   
+        },
+        {
+            label:'Deaths',
+            key:'death',
+            color:'rgb(255,99,132)'   
+        }
+    ].reduce((prev,next)=>{
+        if (historicData.filter((d) => d[next.key]!==null).length>4 ){
+            prev.push(parserChart(historicData,next.key,next.label,next.color));
+        }
+        return prev;
+    },[]);
+}
+
+function parserChart(historicData,key,label,color){
+    const chartData = historicData.map(data =>{
+        return {
+            x:moment(data.date,'YYYYMMDD'),
+            y:data[key]||0,
+        }
+    });
+    return {
+        label,
+        data:chartData,
+        fill:false,
+        borderColor:color,
+    };
+}
+
 function parserStats(rawStats){
     return {
         cases:format.number(rawStats.positive),
@@ -29,4 +83,5 @@ function parserStats(rawStats){
 export default{
     carbookStats,
     stateStats,
+    historicUS,
 }

@@ -4,7 +4,8 @@
 	export async function preload(){
 		try {
 			const carbookStats = await requests.carbookStats();
-			return {carbookStats};
+			const historicUS = await requests.historicUS();
+			return {carbookStats,historicUS};
 		} catch (error) {
 			this.error(500,"There is an error in calling the api,please try again in 5 minutes.");
 			return;
@@ -22,6 +23,8 @@ import Error from './_error.svelte';
 import Layout from './_layout.svelte';
 
 	export let carbookStats;
+	export let historicUS;
+	console.log(historicUS,"historicUS");
 	console.log(carbookStats,"carbookStats");
 </script>
 
