@@ -3,7 +3,6 @@
 
 	export async function preload(){
 		try {
-			throw new Error("This is bad:(")
 			const carbookStats = await requests.carbookStats();
 			return {carbookStats};
 		} catch (error) {

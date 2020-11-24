@@ -1,5 +1,6 @@
 <script context="module">
     import stateNames from '../data/stateName.js';
+    import requests from '../data/requests.js';
 
     export async function preload(page){
         const state = page.params['state'];
@@ -8,7 +9,9 @@
             return;
         }
         try {
-            return {state:page.params['state']}   
+            const stats = await requests.stateStats(state);
+
+            return {state,stats}   
         } catch (error) {
             this.error(500,"There is an error in calling the api,please try again in 5 minutes.");
 			return;
@@ -20,8 +23,11 @@
 	import Carusage from '../components/Carusage.svelte';
 	import Carbookuser from '../components/Carbookuser.svelte';
     import TableContainer from '../components/TableContainer.svelte';
+import About from './about.svelte';
+import Error from './_error.svelte';
     
     export let state;
+    export let stats;
 </script>
 
 <svelte:head>
@@ -35,5 +41,5 @@
 </div>
 
 <Carplate />
-<Carusage />
+<Carusage {...stats}/>
 <Carbookuser />
