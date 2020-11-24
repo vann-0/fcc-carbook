@@ -17,6 +17,12 @@ function historicUS(historicData){
   return parserHistoric(historicData);
 }
 
+function historicState(state,historicData){
+    const stateHistoric = historicData.filter(d =>d.state ===state );
+
+    return parserHistoric(stateHistoric);
+}
+
 function parserHistoric(historicData){
     return[
         {
@@ -45,7 +51,7 @@ function parserHistoric(historicData){
             color:'rgb(255,99,132)'   
         }
     ].reduce((prev,next)=>{
-        if (historicData.filter((d) => d[next.key]!==null).length>4 ){
+        if (historicData.filter((d) => d[next.key]).length>4 ){
             prev.push(parserChart(historicData,next.key,next.label,next.color));
         }
         return prev;
@@ -84,4 +90,5 @@ export default{
     carbookStats,
     stateStats,
     historicUS,
+    historicState,
 }
