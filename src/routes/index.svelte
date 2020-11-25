@@ -45,4 +45,4 @@ import Layout from './_layout.svelte';
 <Carplate />
 <Carusage {...carbookStats}/>
 <Carbookuser historicData={historicUS} title="Covid-19" />
-<TableContainer />
+<TableContainer data={statesData}/>
