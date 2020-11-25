@@ -8,7 +8,6 @@
 			const statesData = await requests.statesData();
 			return {carbookStats,historicUS,statesData};
 		} catch (error) {
-			console.log(error);
 			this.error(500,"There is an error in calling the api,please try again in 5 minutes.");
 			return;
 		}
@@ -27,9 +26,6 @@ import Layout from './_layout.svelte';
 	export let carbookStats;
 	export let historicUS;
 	export let statesData;
-	console.log(statesData,"statesData");
-	console.log(historicUS,"historicUS");
-	console.log(carbookStats,"carbookStats");
 </script>
 
 <svelte:head>
