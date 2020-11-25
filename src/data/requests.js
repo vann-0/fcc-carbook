@@ -2,9 +2,15 @@ import axios from 'axios';
 import parsers from './parsers';
 
 async function carbookStats(){
-    const response = await axios.get('https://covidtracking.com/api/v1/us/current.json');
+    const response = await axios.get('https://api.covidtracking.com/v1/us/current.json');
 
     return parsers.carbookStats(response.data);
+}
+
+async function statesData(){
+    const response = await axios.get('https://api.covidtracking.com/v1/states/current.json');
+
+    return parsers.stateTable(response.data);
 }
 
 async function stateStats(state){
@@ -29,4 +35,5 @@ export default{
     stateStats,
     historicUS,
     historicState,
+    statesData,
 }
