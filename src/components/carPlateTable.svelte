@@ -6,9 +6,9 @@
             const deleteData = requests.carPlateDelete(id_car);
         } catch (error) {
             console.log(error);
-        }       
-        
+        }               
     }
+    
 </script>
 
 <style>
@@ -51,7 +51,7 @@
                             {plate.plate}
                         </td>
                         <td>
-                            <button on:click={carPlateDelete(plate.id_car)}>Delete</button>
+                        <button on:click={carPlateDelete(plate.id_car)}>Delete</button>
                         </td>
                     </tr>
                 {/each}

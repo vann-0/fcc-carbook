@@ -21,9 +21,8 @@
 	  setInterval(async () => {
         const response = await requests.carplateState();
         carPlateStates=response;
-	  }, 1000)
+    }, 1000)
   });
-
     // export let carPlateStates;
 </script>
 
