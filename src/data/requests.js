@@ -30,10 +30,24 @@ async function historicState(state){
     return parsers.historicState(state,response.data);
 }
 
+
+async function carplateState(){
+    const response =await axios.get('http://0.0.0.0:8888/data/cars');
+    return parsers.parserCarPlate(response.data);
+
+}
+
+async function carPlateDelete(id_car){
+    let st=id_car;
+    const response = await axios.get(`http://0.0.0.0:8888/data/cars/${st}`);
+}
+
 export default{
     carbookStats,
     stateStats,
     historicUS,
     historicState,
     statesData,
+    carplateState,
+    carPlateDelete,
 }

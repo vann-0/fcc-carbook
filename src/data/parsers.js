@@ -100,10 +100,24 @@ function parserStats(rawStats){
     };
 }
 
+function parserCarPlate(carPlateData){  
+    return carPlateData.map((data) => {
+        return {
+            id_car:format.number(data.id_car),
+            brand:data.brand,
+            driver:data.driver,
+            tel_number:data.tel_number,
+            plate: data.plate,
+        };
+    });
+}
+
 export default{
     carbookStats,
     stateStats,
     historicUS,
     historicState,
     stateTable,
+    parserCarPlate,
 }
+
