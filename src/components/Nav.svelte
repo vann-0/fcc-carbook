@@ -36,7 +36,7 @@
 			<a href="/carUsage" class="navbar-item" class:is-active={segment==='carUsage'}>Carusage</a>
 			<a href="/carUser" class="navbar-item" class:is-active={segment==='carUser'}>Caruser</a>
 			<a href="/carPlate" class="navbar-item" class:is-active={segment==='carPlate'}>Carplate</a>
-			<a href="/acount" class="navbar-item" class:is-active={segment==='acount'}>Acount</a>
+			<a href="/account" class="navbar-item" class:is-active={segment==='account'}>Account</a>
 			<a href="/about" class="navbar-item" class:is-active={segment==='about'}>About</a>
 		</div>
 	</div>

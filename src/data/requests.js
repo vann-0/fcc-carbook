@@ -48,6 +48,12 @@ async function carPlateUpdate(id_car,brand,driver,tel_number,plate){
     alert(response.data);
 }
 
+async function carPlateCreate(brand,driver,tel_number,plate)
+{
+    const response = await axios.get(`http://0.0.0.0:8888/data/car?plate=${plate}&brand=${brand}&driver=${driver}&tel_number=${tel_number}`)
+    alert(response.data);
+}
+
 export default{
     carbookStats,
     stateStats,
@@ -57,4 +63,5 @@ export default{
     carplateState,
     carPlateDelete,
     carPlateUpdate,
+    carPlateCreate,
 }

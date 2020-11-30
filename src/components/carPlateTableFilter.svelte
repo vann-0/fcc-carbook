@@ -2,7 +2,7 @@
     import { onMount } from "svelte";
 import { each } from "svelte/internal";
     import requests from '../data/requests.js';
-    export let id_car=1;
+    export let id_car="";
     export let brand ="";
     export let driver ="";
     export let tel_number="";
@@ -30,6 +30,14 @@ import { each } from "svelte/internal";
       }
   }
  
+  function carPlateCreate(brand,driver,tel_number,plate){
+      try {
+          requests.carPlateCreate(brand,driver,tel_number,plate);
+      } catch (error) {
+          console.log(error);
+      }
+  }
+
 </script>
 
 <style>
@@ -65,6 +73,7 @@ import { each } from "svelte/internal";
                                 <option value={state.id_car}>{state.id_car}</option>
                             {/each}
                             <option value={carPlateStates.length+1}>{carPlateStates.length+1}</option>
+                            <option value="">Please select ID of Car.</option>
                     </select>
                 </div>
             </div>
@@ -79,7 +88,7 @@ import { each } from "svelte/internal";
                     Update
                 </button>
                 {:else}
-                <button >
+                <button on:click={carPlateCreate(brand,driver,tel_number,carPlate)}>
                     Addnew
                 </button>
                 {/if}
