@@ -2,7 +2,13 @@
     import {onMount} from "svelte";
     import requests from "../data/requests.js";
     import TableContainer from "../components/accountTableContainer.svelte"
-    
+    $:accountStates = [];
+    onMount(async function(){
+        setInterval(async ()=>{
+            const response = await requests.accountStates();
+            accountStates = response;
+        },1000)
+    })
 
 </script>
 
@@ -23,6 +29,6 @@
 	</div>
 </div>
 
-<TableContainer />
+<TableContainer data={accountStates}/>
 
 

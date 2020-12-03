@@ -73,7 +73,7 @@ import { each } from "svelte/internal";
                                 <option value={state.id_car}>{state.id_car}</option>
                             {/each}
                             <option value={carPlateStates.length+1}>{carPlateStates.length+1}</option>
-                            <option value="">Please select ID of Car.</option>
+                            <option value="">Please select ID of Car</option>
                     </select>
                 </div>
             </div>

@@ -50,7 +50,28 @@ async function carPlateUpdate(id_car,brand,driver,tel_number,plate){
 
 async function carPlateCreate(brand,driver,tel_number,plate)
 {
-    const response = await axios.get(`http://0.0.0.0:8888/data/car?plate=${plate}&brand=${brand}&driver=${driver}&tel_number=${tel_number}`)
+    const response = await axios.get(`http://0.0.0.0:8888/data/car?plate=${plate}&brand=${brand}&driver=${driver}&tel_number=${tel_number}`);
+    alert(response.data);
+}
+
+async function accountStates(){
+    const response = await axios.get(`http://0.0.0.0:8888/data/users`);
+    return parsers.parserAccount(response.data);
+}
+
+async function accountDelete(id_user){
+    let st=id_user;
+    const response = await axios.get(`http://0.0.0.0:8888/data/users/${st}`);
+    alert(response.data);
+}
+
+async function accountUpdata(id_user,name,password,mail_address){
+    const response = await axios.get(`http://0.0.0.0:8888/data/user/${id_user}?name=${name}&password=${password}&mail_address=${mail_address}`)
+    alert(response.data);
+}
+
+async function accountCreate(id_user,name,password,mail_address){
+    const response = await axios.get(`http://0.0.0.0:8888/data/user?id_user=${id_user}&name=${name}&password=${password}&mail_address=${mail_address}`);
     alert(response.data);
 }
 
@@ -64,4 +85,8 @@ export default{
     carPlateDelete,
     carPlateUpdate,
     carPlateCreate,
+    accountStates,
+    accountDelete,
+    accountUpdata,
+    accountCreate,
 }

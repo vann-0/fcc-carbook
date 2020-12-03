@@ -112,6 +112,17 @@ function parserCarPlate(carPlateData){
     });
 }
 
+function parserAccount(accountData){
+    return accountData.map((data) =>{
+        return {
+            id_user:format.number(data.id_user),
+            name:data.name,
+            password:data.password,
+            mail_address:data.mail_address,
+        }
+    })
+}
+
 export default{
     carbookStats,
     stateStats,
@@ -119,5 +130,6 @@ export default{
     historicState,
     stateTable,
     parserCarPlate,
+    parserAccount,
 }
 
