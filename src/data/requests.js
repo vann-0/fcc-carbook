@@ -63,16 +63,19 @@ async function accountDelete(id_user){
     let st=id_user;
     const response = await axios.get(`http://0.0.0.0:8888/data/users/${st}`);
     alert(response.data);
+    // return response.data;
 }
 
 async function accountUpdata(id_user,name,password,mail_address){
     const response = await axios.get(`http://0.0.0.0:8888/data/user/${id_user}?name=${name}&password=${password}&mail_address=${mail_address}`)
     alert(response.data);
+    return response.data;
 }
 
 async function accountCreate(id_user,name,password,mail_address){
     const response = await axios.get(`http://0.0.0.0:8888/data/user?id_user=${id_user}&name=${name}&password=${password}&mail_address=${mail_address}`);
     alert(response.data);
+    return response.data;
 }
 
 export default{

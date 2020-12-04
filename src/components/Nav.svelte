@@ -33,7 +33,7 @@
 	<div class="navbar-menu" class:is-active={isOpen}>
 		<div class="navbar-start">
 			<a href="/" class="navbar-item" class:is-active={segment===undefined}>Log in</a>
-			<a href="/carUsage" class="navbar-item" class:is-active={segment==='carUsage'}>Carusage</a>
+			<a href="/guestInfo" class="navbar-item" class:is-active={segment==='guestInfo'}>guestInfo</a>
 			<a href="/carUser" class="navbar-item" class:is-active={segment==='carUser'}>Caruser</a>
 			<a href="/carPlate" class="navbar-item" class:is-active={segment==='carPlate'}>Carplate</a>
 			<a href="/account" class="navbar-item" class:is-active={segment==='account'}>Account</a>

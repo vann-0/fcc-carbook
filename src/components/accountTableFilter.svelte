@@ -15,19 +15,29 @@
 
     function accountUpdate(){
         try {
-            requests.accountUpdata(id_user,name,password,mail_address);
-            id_user="";
-            name="";
-            password ="";
-            mail_address="";
+            requests.accountUpdata(id_user,name,password,mail_address).then(v =>{
+                if( v[0]==="Already Updated!"){
+                    name="";
+                    password ="";
+                    mail_address="";
+                    id_user="Please select ID of User";
+                }
+            });
         } catch (error) {
             console.log(error);
         }
     }
 
-    function accountCreate(id_user,name,password,mail_address){
+    function accountCreate(){
         try {
-            requests.accountCreate(id_user,name,password,mail_address);
+            requests.accountCreate(id_user,name,password,mail_address).then(v =>{
+                if(v[0]==="Already Added!"){
+                    name="";
+                    password ="";
+                    mail_address="";
+                    id_user="Please select ID of User";
+                }
+            });
         } catch (error) {
             console.log(error);
         }   
@@ -96,3 +106,4 @@
         </div>
     </div>
 </div>
+

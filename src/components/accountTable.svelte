@@ -1,14 +1,21 @@
 <script>
     import requests from '../data/requests.js';
     export let states;
-
+    import Modal from './modal.svelte';
+    var showModal = false;
     function accountDelete(id_user){
-        try {
-            const deleteData = requests.accountDelete(id_user);
+        try {            
+            requests.accountDelete(id_user).then(v=>{
+                if(v[0]==="ok"){
+                    // showModal = true;
+                };
+            });
+            return showModal;            
         } catch (error) {
             console.log(error);
         }
     }
+    // console.log(showModal,"showModal");
 </script>
 
 <style>
@@ -51,3 +58,10 @@
         </table>
     </div>
 </div>
+
+<!-- {#if showModal}
+	<Modal on:close="{() => showModal = false}">
+
+	</Modal>
+{/if} -->
+

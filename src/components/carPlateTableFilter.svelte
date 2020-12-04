@@ -2,11 +2,11 @@
     import { onMount } from "svelte";
 import { each } from "svelte/internal";
     import requests from '../data/requests.js';
-    export let id_car="";
-    export let brand ="";
-    export let driver ="";
-    export let tel_number="";
-    export let carPlate = "";
+    export var id_car="";
+    export var brand ="";
+    export var driver ="";
+    export var tel_number="";
+    export var carPlate = "";
     $: carPlateStates = [];
     onMount(async function() {
 	  setInterval(async () => {
@@ -15,7 +15,7 @@ import { each } from "svelte/internal";
     }, 1000)
   });
 
-  function carPlateUpdate(id_car,brand,driver,tel_number,carPlate){
+  function carPlateUpdate(){
       try {
             if(carPlateStates.find(d =>d.plate===carPlate))
             {
@@ -24,15 +24,25 @@ import { each } from "svelte/internal";
             else
             {
                 requests.carPlateUpdate(id_car,brand,driver,tel_number,carPlate);
+                brand ="";
+                driver ="";
+                tel_number="";
+                carPlate = "";
+                id_car="Please select ID of Car";
             }
       } catch (error) {
           console.log(error);
       }
   }
  
-  function carPlateCreate(brand,driver,tel_number,plate){
+  function carPlateCreate(){
       try {
-          requests.carPlateCreate(brand,driver,tel_number,plate);
+          requests.carPlateCreate(brand,driver,tel_number,carPlate);
+            brand ="";
+            driver ="";
+            tel_number="";
+            carPlate = "";
+            id_car="Please select ID of Car";
       } catch (error) {
           console.log(error);
       }
