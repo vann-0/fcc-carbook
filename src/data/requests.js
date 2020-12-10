@@ -78,6 +78,11 @@ async function accountCreate(id_user,name,password,mail_address){
     return response.data;
 }
 
+async function carUsageStats(plate,request_start_time,request_end_time){
+    const response = await axios.get(`http://0.0.0.0:8888/data/carusages?plate=5&request_start_time=${request_start_time}&request_end_time=${request_end_time}`);
+    return response.data;
+}
+
 export default{
     carbookStats,
     stateStats,
@@ -92,4 +97,5 @@ export default{
     accountDelete,
     accountUpdata,
     accountCreate,
+    carUsageStats,
 }
