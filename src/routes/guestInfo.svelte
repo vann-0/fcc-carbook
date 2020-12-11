@@ -15,8 +15,17 @@
 <script>
     import { onMount } from "svelte";
     import GuestInfoTableContainer from '../components/guestInfoTableContainer.svelte';
-
-    $:guestInfoStates = [];
+    let plate;
+    export let guestInfoStates;
+    onMount(async function(){
+        setInterval(async() =>{
+            const response = await requests.carUsageStats(plate);
+            guestInfoStates = response;
+            // console.log(guestInfoStates[0].plate);
+        },1000)
+    });
+    // export let guestInfoStates;
+    // $:guestInfoStates = [];
     export let carPlateStates;
 </script>
 
@@ -37,25 +46,7 @@
 	</div>
 </div>
 
-<GuestInfoTableContainer data={carPlateStates}/>
-
-<button class="button is-primary is-large modal-button" data-toggle="modal-card" data-target="modal-ter" aria-haspopup="true">Launch card modal</button>
+<GuestInfoTableContainer bind:plate data={carPlateStates} {guestInfoStates}/>
 
 
-<div class="modal-ter">
-  <div class="modal-background"></div>
-  <div class="modal-card">
-    <header class="modal-card-head">
-      <p class="modal-card-title">Modal title</p>
-      <button class="delete" aria-label="close"></button>
-    </header>
-    <section class="modal-card-body">
-      <!-- Content ... -->
-    </section>
-    <footer class="modal-card-foot">
-      <button class="button is-success">Save changes</button>
-      <button class="button">Cancel</button>
-    </footer>
-  </div>
-</div>
   

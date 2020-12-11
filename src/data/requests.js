@@ -79,7 +79,8 @@ async function accountCreate(id_user,name,password,mail_address){
 }
 
 async function carUsageStats(plate,request_start_time,request_end_time){
-    const response = await axios.get(`http://0.0.0.0:8888/data/carusages?plate=5&request_start_time=${request_start_time}&request_end_time=${request_end_time}`);
+    const response = await axios.get(`http://0.0.0.0:8888/data/carusages?plate=${plate}`);
+    // &request_start_time=${request_start_time}&request_end_time=${request_end_time}
     return response.data;
 }
 
