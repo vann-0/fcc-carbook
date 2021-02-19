@@ -70,7 +70,7 @@
 <div class="section">
     <div class="container">
         <div class="columns">
-            <div class="column is-1 is-offset-2">
+            <div class="column is-1 is-offset-1">
                 <p>Starting:</p>
             </div>
             <div class="column is-2">
@@ -82,8 +82,18 @@
             <div class="column is-2">
                 <input type=datetime-local bind:value={nextSaturdayShow}>
             </div>
+            <div class="column is-3 is-offset-2">
+                <div class="select">
+                    <select bind:value={plate}>
+                        {#each states as state}
+                             <option value={state.plate}>{state.plate}</option>
+                        {/each}
+                        <option value="">Please select plate number</option>
+                    </select>
+                </div>
+             </div>
         </div>
-        <div class="columns">
+        <!-- <div class="columns">
             <div class="column is-3 is-offset-2">
                <div class="select">
                    <select bind:value={plate}>
@@ -94,12 +104,7 @@
                    </select>
                </div>
             </div>
-        </div>
-    </div>
-</div>
-
-<div class="section">
-    <div class="container">
+        </div> -->
         <div class="columns">
             <div class="column is-2 is-offset-3">
                 <button class="button is-primary" 

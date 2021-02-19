@@ -21,7 +21,7 @@
         setInterval(async() =>{
             const response = await requests.carUsageStats(plate);
             guestInfoStates = response;
-            // console.log(guestInfoStates[0].plate);
+            //console.log(guestInfoStates[0]);
         },1000)
     });
     // export let guestInfoStates;

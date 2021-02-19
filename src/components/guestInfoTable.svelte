@@ -1,28 +1,52 @@
 <script>    
-    export let plate = "";
-    export let formerSunday,thisMonday,thisTuesday,thisWednesday,thisThursday,thisFriday, nextSaturday;;
+    export const plate = "";
+    export let formerSunday,thisMonday,thisTuesday,thisWednesday,thisThursday,thisFriday, nextSaturday;
     let user =true;
     export let guestInfoStates;
+    let infoUser="";
+    let infoStartTime="";
+    let infoEndTime="";
     function asf(){
         user=!user;
     }
-
-    function tiemChecked(sun1){
-        if(sun1 !=="")
-        {user=!user}
+   
+    function timeChecked(sun1,t1,t2){
+        for (var i in guestInfoStates)
+        {
+            if(sun1 !==""&t1<guestInfoStates[i].end_time&t2>guestInfoStates[i].start_time)
+            {
+                infoUser=guestInfoStates[i].user;
+                infoStartTime=guestInfoStates[i].start_time;
+                infoEndTime=guestInfoStates[i].end_time;
+                // console.log(t1,guestInfoStates[i].start_time);
+                break;
+            }
+        }
+        if(sun1 !==""&sun1!=undefined)
+        {
+            user=!user;
+        }
     }
     let sun1,sun2,sun3,sun4,sun5,sun6,sun7,sun8;
     import {onMount} from 'svelte';
+import { each } from 'svelte/internal';
     onMount(async function(){
         setInterval(async()=>{
             if(guestInfoStates !== undefined)
-                if(guestInfoStates[0].plate !== undefined)
-                {sun1="spec"}
-                else
-                {sun1=""}
+                for (var i in guestInfoStates)
+                    {
+                        if(guestInfoStates[i].plate !== undefined&formerSunday+' 09:00:00'<guestInfoStates[i].end_time&formerSunday+' 10:00:00'>guestInfoStates[i].start_time)
+                        {
+                            sun1="spec";
+                            break;
+                        }
+                        else                    
+                        {sun1=""}
+                    }
             else
-            {sun1=""}
-            
+            {
+                // sun1=""
+            }
         },1000)
     });
 </script>
@@ -43,6 +67,7 @@
     .spec:hover{
         opacity:0.6;
     }
+
 </style>
 
 
@@ -55,25 +80,25 @@
                 <tr>
                     <th width=90px></th>
                     <th width=90px word-wrap=break-all>
-                        {formerSunday} Sunday</th>
+                        <div>{formerSunday}</div> Sunday</th>
                     <th width=90px word-wrap=break-all>
-                        {thisMonday} Monday</th>
+                        <div>{thisMonday}</div> Monday</th>
                     <th width=90px word-wrap=break-all>
-                        {thisTuesday} Tuesday</th>
+                        <div>{thisTuesday}</div> Tuesday</th>
                     <th width=90px word-wrap=break-all>
-                        {thisWednesday} Wednesday</th>
+                        <div>{thisWednesday}</div> Wednesday</th>
                     <th width=90px word-wrap=break-all>
-                        {thisThursday} Thursday</th>
+                        <div>{thisThursday}</div> Thursday</th>
                     <th width=90px word-wrap=break-all>
-                        {thisFriday}  Friday</th>
+                        <div>{thisFriday}</div> Friday</th>
                     <th width=90px word-wrap=break-all>
-                        {nextSaturday} Saturday</th>
+                        <div>{nextSaturday}</div> Saturday</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <th>9:00-10:00</th>
-                    <th class={sun1} on:click={tiemChecked(sun1)}></th>
+                    <th class={sun1} on:click={timeChecked(sun1,formerSunday+' 09:00:00',formerSunday+' 10:00:00')}></th>
                     <th></th>
                     <th></th>
                     <th></th>
@@ -203,15 +228,17 @@
     <div class="modal-background" on:click={asf}></div>
     <div class="modal-card">
       <header class="modal-card-head">
-        <p class="modal-card-title">Modal title</p>
+        <p class="modal-card-title">Car Booking Info</p>
         <button class="delete" aria-label="close" on:click={asf}></button>
       </header>
       <section class="modal-card-body">
-        {plate}
+        <div class="column is-6 is-offset-3">username  :{infoUser}</div>
+        <div class="column is-6 is-offset-3">start_time:{infoStartTime}</div>
+        <div class="column is-6 is-offset-3">end_time  :{infoEndTime}</div>
       </section>
       <footer class="modal-card-foot">
-        <button class="button is-success">Save changes</button>
-        <button class="button" on:click={asf} >Cancel</button>
+        <button class="button is-success" on:click={asf}>Confirmed</button>
+        <!-- <button class="button" on:click={asf} >Cancel</button> -->
       </footer>
     </div>
 </div>
