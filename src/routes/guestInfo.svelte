@@ -16,10 +16,11 @@
     import { onMount } from "svelte";
     import GuestInfoTableContainer from '../components/guestInfoTableContainer.svelte';
     let plate;
+    let formerSunday,nextSaturday;
     export let guestInfoStates;
     onMount(async function(){
         setInterval(async() =>{
-            const response = await requests.carUsageStats(plate);
+            const response = await requests.carUsageStats(plate,formerSunday+' 08:00:00',nextSaturday+' 18:00:00');
             guestInfoStates = response;
             //console.log(guestInfoStates[0]);
         },1000)
@@ -46,7 +47,6 @@
 	</div>
 </div>
 
-<GuestInfoTableContainer bind:plate data={carPlateStates} {guestInfoStates}/>
-
+<GuestInfoTableContainer bind:plate bind:formerSunday bind:nextSaturday data={carPlateStates} {guestInfoStates}/>
 
   

@@ -11,7 +11,8 @@
 <script>
     import TableFilter from './guestInfoTableFilter.svelte';
     import Table from './guestInfoTable.svelte';
-    let formerSunday,thisMonday,thisTuesday,thisWednesday,thisThursday,thisFriday, nextSaturday;
+    export let formerSunday,nextSaturday;
+    let thisMonday,thisTuesday,thisWednesday,thisThursday,thisFriday;
     export let data;
     export let plate="";
     export let guestInfoStates;
@@ -23,4 +24,3 @@
 <TableFilter bind:plate bind:formerSunday bind:thisMonday bind:thisTuesday bind:thisWednesday bind:thisThursday bind:thisFriday  bind:nextSaturday {states}/>
 
 <Table {plate} {formerSunday} {nextSaturday} {thisMonday} {thisTuesday} {thisWednesday} {thisThursday} {thisFriday} {guestInfoStates}/>
-
