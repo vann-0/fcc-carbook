@@ -38,6 +38,9 @@
     function subWeek(){
         weekCounter=weekCounter-7;
     }
+    function iniWeek(){
+        weekCounter=weekday;
+    }
 </script>
 
 <style>
@@ -106,12 +109,16 @@
             </div>
         </div> -->
         <div class="columns">
-            <div class="column is-2 is-offset-3">
+            <div class="column is-2 is-offset-1">
                 <button class="button is-primary" 
                 on:click={addWeek} >Previous week</button>
             </div>
-            <div class="column is-2 is-offset-3">
-                <button class="button is-primary"
+            <div class="column is-2 is-offset-2">
+                <button class="button is-primary" 
+                on:click={iniWeek} >This week</button>
+            </div>
+            <div class="column is-2 is-offset-2">
+                <button class="button is-primary" 
                 on:click={subWeek}>Next week</button>
             </div>
         </div>

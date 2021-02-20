@@ -6,6 +6,7 @@
     let infoUser="";
     let infoStartTime="";
     let infoEndTime="";
+    let infoBooker="";
     function asf(){
         user=!user;
     }
@@ -18,6 +19,7 @@
                 infoUser=guestInfoStates[i].user;
                 infoStartTime=guestInfoStates[i].start_time;
                 infoEndTime=guestInfoStates[i].end_time;
+                infoBooker=guestInfoStates[i].booker;
                 // console.log(t1,guestInfoStates[i].start_time);
                 break;
             }
@@ -827,7 +829,7 @@ import { each } from 'svelte/internal';
     </div>    
 </div>
 
-<button class="button" on:click={asf} >showModal</button>
+<!-- <button class="button" on:click={asf} >showModal</button>
 
 <div hidden={!user}>
     {#if guestInfoStates !== undefined }
@@ -838,7 +840,7 @@ import { each } from 'svelte/internal';
             </h1>
         {/if}
     {/if}
-</div>
+</div> -->
 
 <div class="modal-car" hidden={user}>
     <div class="modal-background" on:click={asf}></div>
@@ -848,7 +850,8 @@ import { each } from 'svelte/internal';
         <button class="delete" aria-label="close" on:click={asf}></button>
       </header>
       <section class="modal-card-body">
-        <div class="column is-6 is-offset-3">username  :{infoUser}</div>
+        <div class="column is-6 is-offset-3">input_by  :{infoBooker}</div>
+        <div class="column is-6 is-offset-3">book_by   :{infoUser}</div>
         <div class="column is-6 is-offset-3">start_time:{infoStartTime}</div>
         <div class="column is-6 is-offset-3">end_time  :{infoEndTime}</div>
       </section>
